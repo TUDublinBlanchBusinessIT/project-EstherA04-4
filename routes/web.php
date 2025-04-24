@@ -1,11 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TeamController;
+use App\Http\Controllers\PlayerController;
 
 /*
-|--------------------------------------------------------------------------
+|----------------------------------------------------------------------
 | Web Routes
-|--------------------------------------------------------------------------
+|----------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
@@ -13,6 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Default route
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/teams');  // Redirect to teams index page
 });
+
+// Routes for Teams (using TeamController)
+Route::resource('teams', TeamController::class);
+
+// Routes for Players (using PlayerController)
+Route::resource('players', PlayerController::class);
