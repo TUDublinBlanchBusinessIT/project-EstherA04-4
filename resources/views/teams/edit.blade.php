@@ -6,14 +6,14 @@
         <div class="card-body">
             <form action="{{ route('teams.update', $team->id) }}" method="POST">
                 @csrf
-                @method('PUT')
+                @method('PUT')  <!-- This is important for the PUT request -->
                 <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
-                    <input type="text" name="name" class="form-control" id="name" value="{{ $team->name }}" required>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" class="form-control" value="{{ $team->name }}" required>
                 </div>
                 <div class="mb-3">
-                    <label for="coach" class="form-label">Coach</label>
-                    <input type="text" name="coach" class="form-control" id="coach" value="{{ $team->coach }}" required>
+                    <label for="coach">Coach</label>
+                    <input type="text" name="coach" id="coach" class="form-control" value="{{ $team->coach }}" required>
                 </div>
                 <button class="btn btn-primary">Update</button>
             </form>

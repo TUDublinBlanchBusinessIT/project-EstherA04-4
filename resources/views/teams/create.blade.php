@@ -7,12 +7,12 @@
             <form action="{{ route('teams.store') }}" method="POST">
                 @csrf
                 <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
-                    <input type="text" name="name" class="form-control" id="name" required>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" class="form-control" required>
                 </div>
                 <div class="mb-3">
-                    <label for="coach" class="form-label">Coach</label>
-                    <input type="text" name="coach" class="form-control" id="coach" required>
+                    <label for="coach">Coach</label>
+                    <input type="text" name="coach" id="coach" class="form-control" required>
                 </div>
                 <button class="btn btn-primary">Save</button>
             </form>
