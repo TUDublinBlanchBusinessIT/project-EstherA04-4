@@ -52,7 +52,30 @@ class TeamController extends Controller
 
         $team->update([
             'name' => $request->name,
-            'coach' => $request->coach,
+            'coach' => $request->coach,<?php
+
+            namespace App\Http\Controllers;
+            
+            use App\Models\Team;
+            use Illuminate\Http\Request;
+            
+            class TeamController extends Controller
+            {
+                /**
+                 * Display a listing of the teams with coaches.
+                 */
+                public function index()
+                {
+                    // Fetch all teams from the database
+                    $teams = Team::all();
+            
+                    // Return the index view and pass the teams
+                    return view('teams.index', compact('teams'));
+                }
+            
+                // Other methods like create, store, edit, update, and destroy...
+            }
+            
         ]);
 
         return redirect()->route('teams.index')->with('success', 'Team updated successfully!');
