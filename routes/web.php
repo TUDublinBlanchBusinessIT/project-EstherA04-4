@@ -8,20 +8,21 @@ use App\Http\Controllers\PlayerController;
 |----------------------------------------------------------------------
 | Web Routes
 |----------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| Here is where you can register web routes for your application.
+| These routes are loaded by the RouteServiceProvider within a group
+| which contains the "web" middleware group. Now create something great!
 |
 */
 
-// Default route
 Route::get('/', function () {
-    return redirect()->route('teams.index');  // Redirect to teams index page
+    return view('welcome');
 });
 
-// Routes for Teams (using TeamController)
-Route::resource('teams', TeamController::class)->except(['show']);
+Route::get('/teams', [TeamController::class, 'index'])->name('teams.index');
+Route::get('/players', [PlayerController::class, 'index'])->name('players.index');
 
-// Routes for Players (using PlayerController)
-Route::resource('players', PlayerController::class)->except(['show']);
+// CRUD Routes for teams
+Route::resource('teams', TeamController::class);
+
+// CRUD Routes for players
+Route::resource('players', PlayerController::class);

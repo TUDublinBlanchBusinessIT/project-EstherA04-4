@@ -16,18 +16,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @php
-                        // Define background colors for teams based on their names
-                        $colors = [
-                            'Manchester United' => 'bg-danger text-white',  // Red background for Manchester United
-                            'Chelsea' => 'bg-primary text-white',           // Blue background for Chelsea
-                            'Arsenal' => 'bg-dark text-white',              // Dark background for Arsenal
-                            'Tottenham Hotspur' => 'bg-light text-dark',    // Light background for Tottenham Hotspur
-                        ];
-                    @endphp
-
                     @foreach ($teams as $team)
-                        <tr class="{{ $colors[$team->name] ?? 'bg-light' }}">
+                        <tr>
                             <td>{{ $team->name }}</td>
                             <td>{{ $team->coach }}</td>
                             <td>

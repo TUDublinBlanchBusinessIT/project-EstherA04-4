@@ -7,60 +7,54 @@ use Illuminate\Http\Request;
 
 class TeamController extends Controller
 {
+    // Show all teams
     public function index()
     {
-        // Fetch all teams
-        $teams = Team::all();
+        $teams = Team::all(); // Fetch all teams
         return view('teams.index', compact('teams'));
     }
 
+    // Show the form to create a new team
     public function create()
     {
         return view('teams.create');
     }
 
+    // Store a new team in the database
     public function store(Request $request)
     {
-        // Validate request
         $request->validate([
             'name' => 'required',
             'coach' => 'required',
         ]);
 
-        // Create team
-        Team::create([
-            'name' => $request->name,
-            'coach' => $request->coach,
-        ]);
+        Team::create($request->all());
 
         return redirect()->route('teams.index');
     }
 
+    // Show the form to edit a team
     public function edit(Team $team)
     {
         return view('teams.edit', compact('team'));
     }
 
+    // Update a team
     public function update(Request $request, Team $team)
     {
-        // Validate request
         $request->validate([
             'name' => 'required',
             'coach' => 'required',
         ]);
 
-        // Update team
-        $team->update([
-            'name' => $request->name,
-            'coach' => $request->coach,
-        ]);
+        $team->update($request->all());
 
         return redirect()->route('teams.index');
     }
 
+    // Delete a team
     public function destroy(Team $team)
     {
-        // Delete team
         $team->delete();
         return redirect()->route('teams.index');
     }

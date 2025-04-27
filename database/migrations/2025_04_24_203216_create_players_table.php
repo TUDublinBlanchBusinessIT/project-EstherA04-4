@@ -1,4 +1,3 @@
-// database/migrations/xxxx_xx_xx_xxxxxx_create_players_table.php
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -13,11 +12,8 @@ class CreatePlayersTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('age');
-            $table->unsignedBigInteger('team_id'); // Foreign key to teams table
+            $table->foreignId('team_id')->constrained('teams')->onDelete('cascade');
             $table->timestamps();
-
-            // Define the foreign key relationship
-            $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
         });
     }
 
