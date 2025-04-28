@@ -24,6 +24,11 @@
             background-color: #b388eb;
             color: white;
         }
+
+        /* Apply a light grey background color to the entire row on hover */
+        .table tbody tr:hover {
+            background-color: #f0f0f0; /* Light grey color */
+        }
     </style>
 </head>
 <body>

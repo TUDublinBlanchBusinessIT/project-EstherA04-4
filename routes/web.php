@@ -5,7 +5,7 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\BetController;
 
-// Default route
+// Default route (redirect to teams index page)
 Route::get('/', function () {
     return redirect()->route('teams.index');
 });
