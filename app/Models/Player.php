@@ -2,17 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Player extends Model
-{
+class Player extends Model {
     use HasFactory;
 
-    protected $fillable = ['name', 'age', 'team_id'];
+    protected $fillable = ['name', 'position', 'team_id', 'age', 'nationality'];
 
-    public function team()
-    {
+    public function team() {
         return $this->belongsTo(Team::class);
     }
 }

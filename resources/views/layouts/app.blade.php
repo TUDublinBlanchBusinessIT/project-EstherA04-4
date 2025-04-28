@@ -1,33 +1,44 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-
-        <title>{{ config('app.name', 'Laravel') }}</title>
-
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
-
-            <!-- Page Heading -->
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
-
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Football Manager</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f6e6fa;
+        }
+        .navbar, .btn-primary {
+            background-color: #b388eb !important;
+            border-color: #b388eb !important;
+        }
+        .card-header, .table thead {
+            background-color: #d8b4f8 !important;
+            color: white;
+        }
+        .btn-outline-secondary {
+            color: #b388eb;
+            border-color: #b388eb;
+        }
+        .btn-outline-secondary:hover {
+            background-color: #b388eb;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="/">Football Manager</a>
+            <div>
+                <a href="{{ route('teams.index') }}" class="btn btn-outline-light me-2">Teams</a>
+                <a href="{{ route('players.index') }}" class="btn btn-outline-light">Players</a>
+            </div>
         </div>
-    </body>
+    </nav>
+
+    <div class="container">
+        @yield('content')
+    </div>
+</body>
 </html>

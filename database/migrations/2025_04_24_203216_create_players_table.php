@@ -11,8 +11,8 @@ class CreatePlayersTable extends Migration
         Schema::create('players', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('age');
-            $table->foreignId('team_id')->constrained('teams')->onDelete('cascade');
+            $table->integer('rating');
+            $table->foreignId('team_id')->nullable()->constrained()->onDelete('set null');
             $table->timestamps();
         });
     }
