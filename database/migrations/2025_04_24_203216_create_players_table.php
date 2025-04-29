@@ -1,3 +1,5 @@
+// database/migrations/2025_04_28_000002_create_players_table.php
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -11,8 +13,9 @@ class CreatePlayersTable extends Migration
         Schema::create('players', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('rating');
-            $table->foreignId('team_id')->nullable()->constrained()->onDelete('set null');
+            $table->foreignId('team_id')->constrained('teams');
+            $table->string('position');
+            $table->integer('age');
             $table->timestamps();
         });
     }

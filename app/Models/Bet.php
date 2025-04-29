@@ -9,23 +9,15 @@ class Bet extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'player_id',
-        'team_id',
-        'amount',
-        'odds',
-        'outcome',
-    ];
+    protected $fillable = ['team_id', 'player_id', 'bet_amount'];
 
-    // Add this: a bet belongs to a player
-    public function player()
-    {
-        return $this->belongsTo(Player::class);
-    }
-
-    // Add this: a bet belongs to a team
     public function team()
     {
         return $this->belongsTo(Team::class);
+    }
+
+    public function player()
+    {
+        return $this->belongsTo(Player::class);
     }
 }

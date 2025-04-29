@@ -1,3 +1,5 @@
+// database/migrations/2025_04_28_000001_create_teams_table.php
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -11,6 +13,7 @@ class CreateTeamsTable extends Migration
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('coach');
             $table->timestamps();
         });
     }

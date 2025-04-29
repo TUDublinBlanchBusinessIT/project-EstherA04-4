@@ -23,13 +23,13 @@ class PlayerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'team_id' => 'required|exists:teams,id'
+            'name' => 'required',
+            'team_id' => 'required'
         ]);
 
         Player::create($request->all());
 
-        return redirect()->route('players.index');
+        return redirect()->route('players.index')->with('success', '✅ Player created successfully!');
     }
 
     public function edit(Player $player)
@@ -41,19 +41,18 @@ class PlayerController extends Controller
     public function update(Request $request, Player $player)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'team_id' => 'required|exists:teams,id'
+            'name' => 'required',
+            'team_id' => 'required'
         ]);
 
         $player->update($request->all());
 
-        return redirect()->route('players.index');
+        return redirect()->route('players.index')->with('success', '✅ Player updated successfully!');
     }
 
     public function destroy(Player $player)
     {
         $player->delete();
-
-        return redirect()->route('players.index');
+        return redirect()->route('players.index')->with('success', '🗑️ Player deleted successfully!');
     }
 }
